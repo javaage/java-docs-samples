@@ -6,7 +6,7 @@
 <web-app xmlns="http://java.sun.com/xml/ns/javaee" version="2.5">
     <servlet>
         <servlet-name>postgresql</servlet-name>
-        <servlet-class>com.example.postgres.PostgresSqlServlet</servlet-class>
+        <servlet-class>com.cisco.la.PostgresSqlServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>postgresql</servlet-name>
