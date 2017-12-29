@@ -12,6 +12,10 @@
         <servlet-name>postgresql</servlet-name>
         <url-pattern>/postgresql</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>userservice</servlet-name>
+        <servlet-class>com.cisco.la.UserSqlServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>userservice</servlet-name>
         <url-pattern>/userservice</url-pattern>
