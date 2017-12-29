@@ -3,7 +3,6 @@
 /* Created on:     12/29/2017 9:18:09 AM                        */
 /*==============================================================*/
 
-
 drop table LA_COURSE;
 
 drop table LA_CRS_HISTORY;
