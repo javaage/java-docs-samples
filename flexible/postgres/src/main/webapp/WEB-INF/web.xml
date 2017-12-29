@@ -12,6 +12,10 @@
         <servlet-name>postgresql</servlet-name>
         <url-pattern>/postgresql</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>userservice</servlet-name>
+        <url-pattern>/userservice</url-pattern>
+    </servlet-mapping>
     <welcome-file-list>
         <welcome-file>index.html</welcome-file>
     </welcome-file-list>
