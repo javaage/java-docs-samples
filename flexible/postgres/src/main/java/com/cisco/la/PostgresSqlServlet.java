@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.example.postgres;
+package com.cisco.la;
 
 import com.google.common.base.Stopwatch;
 
