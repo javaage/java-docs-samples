@@ -20,6 +20,7 @@ import com.google.common.base.Stopwatch;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Inet4Address;
 import java.net.Inet6Address;
@@ -44,6 +45,8 @@ import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
+
+
 // [START example]
 @SuppressWarnings("serial")
 @WebServlet(name = "userservice", value = "")
@@ -52,7 +55,6 @@ public class UserServlet extends HttpServlet {
 
 	@Override
 	public void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
-
 		PrintWriter out = resp.getWriter();
 		resp.setContentType("text/plain");
 		out.println("User:test ");
@@ -60,14 +62,20 @@ public class UserServlet extends HttpServlet {
 
 	@Override
 	public void init() throws ServletException {
-		try{
-			String resource = "mybatis-config.xml";
-			InputStream inputStream = Resources.getResourceAsStream(resource);
-			SqlSessionFactoryBuilder builder = new SqlSessionFactoryBuilder();
-			SqlSessionFactory factory = builder.build(inputStream);
-		}catch(IOException exp){
-			
+		String resource = "mybatis-config.xml";
+		InputStream inputStream = null;
+    InputStreamReader reader = null;
+		try {
+			inputStream = Resources.getResourceAsStream(resource);
+			reader = new InputStreamReader(inputStream);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
+
+		SqlSessionFactoryBuilder builder = new SqlSessionFactoryBuilder();
+
+		SqlSessionFactory factory = builder.build(reader);
 
 	}
 }
