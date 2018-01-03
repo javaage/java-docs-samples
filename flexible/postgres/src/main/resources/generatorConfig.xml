@@ -61,13 +61,5 @@
       <columnOverride column="USR_RL_NAME" property="roleName"  />
       <columnOverride column="USR_ACTIVE" property="active"  />
     </table>
-    <!-- 
-    <table schema="public" tableName="wms_speed" domainObjectName="SpeedModel">
-    <generatedKey column="wm_speed_id" sqlStatement="SELECT nextval('wms_speed_wm_speed_id_seq')" identity="true"/>
-      <columnOverride column="wm_speed_id" property="id"  javaType="int"/>
-      <columnOverride column="wm_speed" property="speed" />
-      <columnOverride column="wm_time" property="time" />
-    </table>
-     -->
   </context>
 </generatorConfiguration>

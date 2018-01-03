@@ -61,7 +61,7 @@ public class UserServlet extends HttpServlet {
 	@Override
 	public void init() throws ServletException {
 		try{
-			String resource = "org/mybatis/builder/mybatis-config.xml";
+			String resource = "mybatis-config.xml";
 			InputStream inputStream = Resources.getResourceAsStream(resource);
 			SqlSessionFactoryBuilder builder = new SqlSessionFactoryBuilder();
 			SqlSessionFactory factory = builder.build(inputStream);
