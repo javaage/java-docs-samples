@@ -34,6 +34,7 @@ import java.sql.Timestamp;
 import java.util.Date;
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
+import java.io.Reader;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -58,24 +59,5 @@ public class UserServlet extends HttpServlet {
 		PrintWriter out = resp.getWriter();
 		resp.setContentType("text/plain");
 		out.println("User:test ");
-	}
-
-	@Override
-	public void init() throws ServletException {
-		String resource = "mybatis-config.xml";
-		InputStream inputStream = null;
-    InputStreamReader reader = null;
-		try {
-			inputStream = Resources.getResourceAsStream(resource);
-			reader = new InputStreamReader(inputStream);
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-
-		SqlSessionFactoryBuilder builder = new SqlSessionFactoryBuilder();
-
-		SqlSessionFactory factory = builder.build(reader);
-
 	}
 }
