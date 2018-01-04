@@ -56,8 +56,22 @@ public class UserServlet extends HttpServlet {
 
 	@Override
 	public void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
-		PrintWriter out = resp.getWriter();
+
+    String url;
+
+    Properties properties = new Properties();
+    try {
+      properties.load(
+        getServletContext().getResourceAsStream("/WEB-INF/classes/config.properties"));
+      url = properties.getProperty("sqlUrl");
+    } catch (IOException e) {
+      log("no property", e);  // Servlet Init should never fail.
+      return;
+    }
+
+    log("connecting to: " + url);
+    PrintWriter out = resp.getWriter();
 		resp.setContentType("text/plain");
-		out.println("User:test ");
+		out.println("connecting to: " + url);
 	}
 }
