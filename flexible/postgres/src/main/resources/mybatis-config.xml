@@ -7,7 +7,7 @@
     <package name="com.cisco.la.entity"/>
   </typeAliases>
 
-  <environments default="development">
+  <environments default="product">
     <environment id="development">
       <transactionManager type="JDBC" />
       <dataSource type="POOLED">
@@ -15,6 +15,15 @@
         <property name="url" value="jdbc:postgresql://localhost:5432/la" />
         <property name="username" value="postgres" />
         <property name="password" value="19786028" />
+      </dataSource>
+    </environment>
+    <environment id="product">
+      <transactionManager type="JDBC" />
+      <dataSource type="POOLED">
+        <property name="driver" value="org.postgresql.Driver" />
+        <property name="url" value="jdbc:postgresql://google/postgres?useSSL=false&amp;socketFactoryArg=newagent-25039:asia-northeast1:la&amp;socketFactory=com.google.cloud.sql.postgres.SocketFactory&amp;user=postgres&amp;password=la123456" />
+        <property name="username" value="postgres" />
+        <property name="password" value="la123456" />
       </dataSource>
     </environment>
   </environments>
