@@ -16,7 +16,6 @@
 
 package com.cisco.la;
 
-import com.cisco.la.entity.LaUser;
 import com.cisco.la.util.MyBatisUtil;
 import com.google.common.base.Stopwatch;
 
@@ -48,64 +47,36 @@ import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
-import com.cisco.la.dao.LaUserDao;
-import com.cisco.la.dao.LaRlHistoryDao;
-import com.cisco.la.entity.LaRlHistory;
+import com.cisco.la.mapper.RoleHistoryModelMapper;
+import com.cisco.la.model.RoleHistoryModel;
 
 // [START example]
 @SuppressWarnings("serial")
-@WebServlet(name = "userservice", value = "")
+@WebServlet(name = "user", value = "")
 public class UserServlet extends HttpServlet {
 	Connection conn;
 
 	@Override
 	public void doGet(HttpServletRequest req, HttpServletResponse resp){
-
-//    try {
-//
-//      Class.forName("org.postgresql.Driver");
-//      conn = DriverManager.getConnection("jdbc:postgresql://localhost:5432/la","postgres","19786028");
-//    } catch (ClassNotFoundException e) {
-//      e.getMessage();
-//    } catch (SQLException e) {
-//      e.getMessage();
-//    } finally {
-//      // Nothing really to do here.
-//    }
-//
-//    String selectSql = "select hstr_usr_id, hstr_crs_id from la_crs_history";
-//    try (ResultSet rs = conn.prepareStatement(selectSql).executeQuery()) {
-//      while (rs.next()) {
-//        String savedIp = rs.getString("hstr_usr_id");
-//        int test = 0;
-//      }
-//    }catch (Exception e){
-//      e.getMessage();
-//    }
-
-
     try {
       PrintWriter out = resp.getWriter();
       resp.setContentType("text/plain");
       out.println("connecting to: ");
 
       Reader reader = new InputStreamReader(getServletContext().getResourceAsStream("/WEB-INF/classes/mybatis-config.xml"));
-      //out.print(reader.read());
-      //out.println("end");
       SqlSessionFactoryBuilder builder = new SqlSessionFactoryBuilder();
-      out.println("end1");
       SqlSessionFactory sqlSessionFactory = builder.build(reader);
-      out.println("end2");
       SqlSession sqlSession = sqlSessionFactory.openSession();
-      out.println("end3");
-      LaRlHistoryDao laRlHistoryDao = sqlSession.getMapper(LaRlHistoryDao.class);
+
+      RoleHistoryModelMapper laRlHistoryDao = sqlSession.getMapper(RoleHistoryModelMapper.class);
       out.println("end4");
-      LaRlHistory laRlHistory = new LaRlHistory();
-      laRlHistory.setHstrRlHistory("sys");
-      laRlHistory.setHstrRlName("sys");
-      laRlHistory.setHstrUpdateTime(new Date());
-      laRlHistory.setHstrUsrId("sys");
-      laRlHistoryDao.insertLaRlHistory(laRlHistory);
+      RoleHistoryModel roleHistoryModel = new RoleHistoryModel();
+      roleHistoryModel.setRoleHistory("test2");
+      roleHistoryModel.setRoleName("test2");
+      roleHistoryModel.setUpdateTime(new Date());
+      roleHistoryModel.setUserID("test2");
+
+      laRlHistoryDao.insert(roleHistoryModel);
       out.println("end123");
       sqlSession.commit();
     } catch (IOException e1) {
@@ -117,44 +88,5 @@ public class UserServlet extends HttpServlet {
 
       }
     }
-
-
-
-//	  try {
-//      PrintWriter out = resp.getWriter();
-//      resp.setContentType("text/plain");
-//      out.println("connecting to: ");
-//
-//      String path = Thread.currentThread().getContextClassLoader().getResource("/mybatis-config.xml").getPath();
-//      out.println(path);
-//      Reader reader = Resources.getResourceAsReader(path);
-//      SqlSessionFactoryBuilder builder = new SqlSessionFactoryBuilder();
-//      SqlSessionFactory sqlSessionFactory = builder.build(reader);
-//      out.println("end");
-//    } catch (IOException  exp){
-//	    try {
-//        PrintWriter out = resp.getWriter();
-//        resp.setContentType("text/plain");
-//        out.println(exp.getMessage());
-//      }catch (IOException  e){
-//
-//      }
-//    }
-
-//    String path = MyBatisUtil.class.getResource("/mybatis-config.xml").toString();
-//    System.out.println("path = " + path);
-//    PrintWriter out = resp.getWriter();
-//    resp.setContentType("text/plain");
-//    out.println("connecting to: " + path);
-//	  try {
-//      MyBatisUtil.getSqlSessionFactory();
-//      SqlSession sqlSession = MyBatisUtil.getSession();
-//      LaUserDao laUserDao = sqlSession.getMapper(LaUserDao.class);
-//      PrintWriter out = resp.getWriter();
-//      resp.setContentType("text/plain");
-//      out.println("connecting to: ");
-//    }catch (Exception exp){
-//
-//    }
 	}
 }

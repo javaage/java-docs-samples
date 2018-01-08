@@ -4,10 +4,10 @@
   "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
   <typeAliases>
-    <package name="com.cisco.la.entity"/>
+    <package name="com.cisco.la.model"/>
   </typeAliases>
 
-  <environments default="product">
+  <environments default="development">
     <environment id="development">
       <transactionManager type="JDBC" />
       <dataSource type="POOLED">
@@ -29,12 +29,13 @@
   </environments>
 
   <mappers>
-    <mapper resource="com/cisco/la/dao/LaUserMapper.xml" />
-    <mapper resource="com/cisco/la/dao/LaRlHistoryMapper.xml" />
-    <mapper resource="com/cisco/la/dao/LaCrsHistoryMapper.xml" />
+    <mapper resource="com/cisco/la/mapper/CourseModelMapper.xml" />
+    <mapper resource="com/cisco/la/mapper/CourseHistoryModelMapper.xml" />
+    <mapper resource="com/cisco/la/mapper/GoldenSampleModelMapper.xml" />
+    <mapper resource="com/cisco/la/mapper/RoleHistoryModelMapper.xml" />
+    <mapper resource="com/cisco/la/mapper/RoleModelMapper.xml" />
+    <mapper resource="com/cisco/la/mapper/UserModelMapper.xml" />
   </mappers>
-
-
 </configuration>
 
 

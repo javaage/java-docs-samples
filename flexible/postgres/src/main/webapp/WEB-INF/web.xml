@@ -14,13 +14,58 @@
     </servlet-mapping>
 
     <servlet>
-        <servlet-name>userservice</servlet-name>
-        <servlet-class>com.cisco.la.UserServlet</servlet-class>
+        <servlet-name>coursehistory</servlet-name>
+        <servlet-class>com.cisco.la.CourseHistoryServlet</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>userservice</servlet-name>
-        <url-pattern>/userservice</url-pattern>
+        <servlet-name>coursehistory</servlet-name>
+        <url-pattern>/coursehistory</url-pattern>
     </servlet-mapping>
+
+  <servlet>
+    <servlet-name>course</servlet-name>
+    <servlet-class>com.cisco.la.CourseServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>course</servlet-name>
+    <url-pattern>/course</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>goldensample</servlet-name>
+    <servlet-class>com.cisco.la.GoldenSampleServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>goldensample</servlet-name>
+    <url-pattern>/goldensample</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>rolehistory</servlet-name>
+    <servlet-class>com.cisco.la.RoleHistoryServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>rolehistory</servlet-name>
+    <url-pattern>/rolehistory</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>role</servlet-name>
+    <servlet-class>com.cisco.la.RoleServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>role</servlet-name>
+    <url-pattern>/role</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>user</servlet-name>
+    <servlet-class>com.cisco.la.UserServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>user</servlet-name>
+    <url-pattern>/user</url-pattern>
+  </servlet-mapping>
 
     <welcome-file-list>
         <welcome-file>index.html</welcome-file>

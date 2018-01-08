@@ -10,7 +10,8 @@
     <javaClientGenerator targetPackage="com.cisco.la.mapper" targetProject="la-service" type="XMLMAPPER" />
 
     <table schema="public" tableName="LA_COURSE" domainObjectName="CourseModel">
-      <columnOverride column="CRS_ID" property="id"  />
+      <generatedKey column="CRS_ID" sqlStatement="SELECT nextval('la_course_crs_id_seq')" identity="true"/>
+      <columnOverride column="CRS_ID" property="id" javaType="int" />
       <columnOverride column="CRS_NAME" property="name"  />
       <columnOverride column="CRS_PRICE" property="price"  />
       <columnOverride column="CRS_STARTDATE" property="startDate"  />
@@ -36,12 +37,6 @@
       <columnOverride column="HSTR_RL_HISTORY" property="roleHistory"  />
       <columnOverride column="HSTR_UPDATE_TIME" property="updateTime"  />
     </table>
-    <table schema="public" tableName="LA_RL_HISTORY" domainObjectName="RoleHistoryModel">
-      <columnOverride column="HSTR_USR_ID" property="userID"  />
-      <columnOverride column="HSTR_RL_NAME" property="roleName"  />
-      <columnOverride column="HSTR_RL_HISTORY" property="roleHistory"  />
-      <columnOverride column="HSTR_UPDATE_TIME" property="updateTime"  />
-    </table>
     <table schema="public" tableName="LA_ROLE" domainObjectName="RoleModel">
       <columnOverride column="RL_NAME" property="id"  />
       <columnOverride column="RL_BU" property="name"  />
@@ -49,7 +44,7 @@
       <columnOverride column="RL_GRADE" property="balance"  />
       <columnOverride column="RL_ACTIVE" property="bu"  />
     </table>
-    
+
     <table schema="public" tableName="LA_USER" domainObjectName="UserModel">
       <columnOverride column="USR_ID" property="id"  />
       <columnOverride column="USR_NAME" property="name"  />
