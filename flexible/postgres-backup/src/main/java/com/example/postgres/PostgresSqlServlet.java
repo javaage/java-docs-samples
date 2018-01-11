@@ -44,7 +44,7 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet(name = "postgresql", value = "")
 public class PostgresSqlServlet extends HttpServlet {
   Connection conn;
-
+  String url;
   @Override
   public void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException,
       ServletException {
@@ -84,6 +84,7 @@ public class PostgresSqlServlet extends HttpServlet {
 
       try (ResultSet rs = conn.prepareStatement(selectSql).executeQuery()) {
         stopwatch.stop();
+        out.print( url + "\n");
         out.print("Last 10 visits:\n");
         while (rs.next()) {
           String savedIp = rs.getString("user_ip");
@@ -99,7 +100,7 @@ public class PostgresSqlServlet extends HttpServlet {
 
   @Override
   public void init() throws ServletException {
-    String url;
+    
 
     Properties properties = new Properties();
     try {
